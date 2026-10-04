@@ -1,4 +1,4 @@
-Week 1 progress report
+####Week 1 progress report
 group 22 report for the first week
 so we were assigned a number of things and deciced to attempt statistics since they were the easier of the rest and we were more familiar in their essence
 #### done 
@@ -9,7 +9,7 @@ we have not yet tested the operation of our library but do intend to in the comi
 ### still doing 
 we are still have testing and final mapping of the library hoping our examples work with the code 
 we also have not compiled it 
-####to do next week 
+####to do next week. 
 completeing to compile and run the library correctly 
 also intend to embark on Mathematical functions (Addition, Subtraction, Multiplication, Division, Power, Square root, Absolute value, Exponential) and linear algerba
 ####AI USE 
