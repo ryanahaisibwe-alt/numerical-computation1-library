@@ -12,6 +12,6 @@ we also have not compiled it
 #### to do next week. 
 completeing to compile and run the library correctly 
 also intend to embark on Mathematical functions (Addition, Subtraction, Multiplication, Division, Power, Square root, Absolute value, Exponential) and linear algerba
-####AI USE 
+#### AI USE 
 we used it to make the cmakelist file
 that thing was just too complicated 
