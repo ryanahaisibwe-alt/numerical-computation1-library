@@ -44,5 +44,5 @@ part1_arithmetic.hpp — public declarations.
 part1_arithmetic.cpp — implementation. 
 test_part1.cpp — test program.
 test_results.txt — recorded test output. 
-README.md —design note and usage instructions.
+Part1_arithmetic.md —design note and usage instructions.
 Part1_Arithmetic_Report.docx — summary of this README.
