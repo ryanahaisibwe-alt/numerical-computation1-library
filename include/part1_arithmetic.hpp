@@ -1,5 +1,5 @@
-#ifndef PART1_ARITHMETIC_HPP
-#define PART1_ARITHMETIC_HPP
+#ifndef part1_arithmetic_hpp
+#define part1_arithmetic_hpp
 
 #include <vector>
 
