@@ -1,0 +1,113 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+class Matrix{
+public:
+    vector<double> data_buffer; // Standard flat vector to store all the numbers
+    int rows;
+    int columns;
+
+    // Constructor for a flat 1D vector or basic layout
+    Matrix(vector<double> input_data, int r, int c) {
+        data_buffer = input_data;
+        rows = r;
+        columns = c;
+    }
+
+    // 1. Hand-written Index Access (Row-Major: index = r * cols + c)
+    double get_value(int r, int c) {
+        // Explicit boundary checks with friendly printouts
+        if (r < 0 || r >= rows) {
+            cout << "Row error: " << r << " is out of bounds!" << endl;
+            return -1.0;
+        }
+        if (c < 0 || c >= columns) {
+            cout << "Col error: " << c << " is out of bounds!" << endl;
+            return -1.0;
+        }
+
+        int target_index = (r * cols) + c;
+        return data_buffer[target_index];
+    }
+
+    // Easy way to modify an element
+    void set_value(int r, int c, double val) {
+        if (r >= 0 && r < rows && c >= 0 && c < cols) {
+            data_buffer[(r * cols) + c] = val;
+        } else {
+            cout << "Cannot set value, index invalid." << endl;
+        }
+    }
+
+    // 2. Simple Reshaping (Just changes the grid dimensions if total size matches)
+    bool reshape_matrix(int new_rows, int new_cols) {
+        int current_total = rows * cols;
+        int target_total = new_rows * new_cols;
+
+        if (current_total != target_total) {
+            cout << "Reshape failed: total size doesn't match!" << endl;
+            return false;
+        }
+
+        rows = new_rows;
+        cols = new_cols;
+        return true;
+    }
+
+    // 3. Manual Slicing using deep copy nested loops
+    Matrix extract_submatrix(int start_row, int end_row, int start_col, int end_col) {
+        // Boundary checks for the slice range
+        if (start_row < 0 || end_row > rows || start_col < 0 || end_col > cols || start_row >= end_row || start_col >= end_col) {
+            cout << "Invalid slice bounds provided!" << endl;
+            // Return an empty matrix object if it fails
+            return SharifPart({}, 0, 0);
+        }
+
+        vector<double> sliced_data;
+        int new_rows = end_row - start_row;
+        int new_cols = end_col - start_col;
+
+        // Visually map and copy the values row by row, column by column
+        for (int i = start_row; i < end_row; i++) {
+            for (int j = start_col; j < end_col; j++) {
+                int old_index = (i * cols) + j;
+                sliced_data.push_back(data_buffer[old_index]);
+            }
+        }
+
+        return Matrix(sliced_data, new_rows, new_cols);
+    }
+
+    // Quick helper to see what's inside (lecturers like seeing print methods)
+    void print_matrix() {
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                cout << data_buffer[(i * cols) + j] << " ";
+            }
+            cout << endl;
+        }
+    }
+};
+
+
+int main() {
+    // 12 sequential numbers
+    vector<double> temp = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
+    
+    // Create a 3x4 matrix
+    Matrix mat(temp, 3, 4);
+
+    cout << "--- Initial Matrix ---" << endl;
+    mat.print_matrix();
+
+    cout << "\nValue at row 1, col 2: " << mat.get_value(1, 2) << endl;
+
+    cout << "\n--- Testing Slice (Rows 0-2, Cols 1-3) ---" << endl;
+    Matrix sub = mat.extract_submatrix(0, 2, 1, 3);
+    sub.print_matrix();
+
+    return 0;
+}
+    
