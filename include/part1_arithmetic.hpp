@@ -21,4 +21,4 @@ Array divide(const Array& a, const Array& b);
 
 } // namespace part1
 
-#endif // PART1_ARITHMETIC_HPP
+#endif // part1_arithmetic_hpp
