@@ -1,5 +1,5 @@
-#ifndef PART3_NUMERIC_HPP
-#define PART3_NUMERIC_HPP
+#ifndef PART3_FLOATING_POINT_AND_INVALID_INPUT_HPP
+#define PART3_FLOATING_POINT_AND_INVALID_INPUT_HPP
 
 #include <vector>
 
@@ -22,4 +22,4 @@ bool approximatelyEqual(
 
 } // namespace part3
 
-#endif // PART3_NUMERIC_HPP
+#endif // PART3_FLOATING_POINT_AND_INVALID_INPUT_HPP
