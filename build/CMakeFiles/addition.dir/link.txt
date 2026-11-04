@@ -1,0 +1,2 @@
+C:\msys64\ucrt64\bin\ar.exe qc libaddition.a CMakeFiles/addition.dir/src/elementwise.cpp.obj CMakeFiles/addition.dir/src/linalg.cpp.obj CMakeFiles/addition.dir/src/random.cpp.obj
+C:\msys64\ucrt64\bin\ranlib.exe libaddition.a
