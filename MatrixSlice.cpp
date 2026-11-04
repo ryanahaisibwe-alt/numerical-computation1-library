@@ -4,9 +4,8 @@
 // Standard namespace directive as requested
 using namespace std;
 
-// Constructor for a flat 1D vector 
+// Constructor for the vector.
 MatrixSlice::MatrixSlice(std::vector<double> input_data, int r, int c) {
-    // std::move transfers the vector instantly without making a slow copy
     data_buffer = input_data;
     rows = r;
     columns = c;
@@ -21,8 +20,8 @@ double MatrixSlice::get_value(int r, int c) {
     }
     // checking if requested column is out-of-bounds 
     if (c < 0 || c >= columns) {
-        cout << "Col error: " << c << " is out of bounds!" << endl;
-        return 0;
+    cout << "Col error: " << c << " is out of bounds!" << endl;
+     return 0;
     }
 
     // Map 2D coordinates to the underlying 1D flat buffer index
@@ -30,9 +29,9 @@ double MatrixSlice::get_value(int r, int c) {
     return data_buffer[target_index];
 }
 
-// Easy way to modify an element
+// function  to modify an element
 void MatrixSlice::set_value(int r, int c, double val) {
-    // Ensure both row and column are within valid operational limits
+    // to ensure thst both row and column are within valid operational limits
     if (r >= 0 && r < rows && c >= 0 && c < columns) {
         data_buffer[(r * columns) + c] = val;
     } else {
