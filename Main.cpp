@@ -1,21 +1,36 @@
 #include "MatrixSlice.hpp"
 #include <iostream>
 #include <vector>
-using namespace std;
-int main() {
-    vector<double> list = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
-    
-    // Create a 3x4 matrix
-    Matrixslice mat(list, 3, 4);
 
-    cout << "--- Initial Matrix ---" << endl;
+using namespace std;
+
+int main() {
+    int rows, cols;
+    cout << "Enter matrix dimensions (Rows Columns): ";
+    cin >> rows >> cols;
+
+    int total = rows * cols;
+    vector<double> input_data(total);
+
+    cout << "Enter " << total << " values sequentially: " << endl;
+    for (int i = 0; i < total; ++i) {
+        cin >> input_data[i];
+    }
+
+    // Create the matrix
+    MatrixSlice mat(input_data, rows, cols);
+
+    cout << "\n--- Your Matrix ---" << endl;
     mat.print_matrix();
 
-    cout << "\nValue at row 1, col 2: " << mat.get_value(1, 2) << endl;
+    // Quick Slice Example
+    int start_r, end_r, start_c, end_c;
+    cout << "\nEnter slice limits (start_row end_row start_col end_col): ";
+    cin >> start_r >> end_r >> start_c >> end_c;
 
-    cout << "\n--- Testing Slice (Rows 0-2, Cols 1-3) ---" << endl;
-    MatrixSlice sub = mat.extract_submatrix(0, 2, 1, 3);
-    sub.print_matrix();
+    cout << "\n--- Extracted Submatrix ---" << endl;
+    MatrixSlice sub_mat = mat.extract_submatrix(start_r, end_r, start_c, end_c);
+    sub_mat.print_matrix();
 
     return 0;
 }
