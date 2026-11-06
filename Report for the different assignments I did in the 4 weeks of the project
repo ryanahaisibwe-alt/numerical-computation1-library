@@ -1,0 +1,121 @@
+# Week 1 — Planning and Design — Individual Progress Report
+
+**Group:** 22 — Numerical Computing 1  
+**Member:** Sooma  
+**Assigned area:** Array creation, concatenation and splitting
+
+## Weekly objective
+The group reviewed the assignment, inspected the repository structure, divided responsibilities and discussed shared conventions for the NDArray interface, indexing, shapes, errors and tests.
+
+## Individual contribution and planning
+The group identified array construction and combination utilities as a distinct module. These helpers make it easier to create predictable inputs for examples and tests and to combine or partition existing arrays.
+
+## Assigned module: scope and design decisions
+Zeros, ones, constants, ranges, concatenation/joining and splitting. The first-week design work was to identify dependencies on the shared NDArray, agree on naming and error-handling conventions, and plan a header, implementation file, focused tests and example for the module.
+
+## Work in progress
+The group was still finalising exact header names, function signatures, axis conventions, floating-point tolerances and local CMake builds. No module-specific implementation or successful build is claimed here unless supported by the original first-week note.
+
+## Challenges and risks
+The main risk was interface mismatch between modules. This member's work depends on agreement about array shape, row-major element order, indexing and error behaviour. Numerical functions also require consistent policies for invalid inputs and floating-point comparisons.
+
+## Plan for Week 2
+Begin implementing the assigned module against the agreed interface, add small known-answer tests and report any dependency or design issue early.
+
+## Evidence and reporting note
+The original Week 1 group note says the team began with statistics, with individual statistical programs and declarations written by members; it also says the library had not yet been compiled or tested at that point. The final allocation identifies the module ownership shown above. This report distinguishes that early group activity from later module-specific work.
+
+
+
+# Week 2 — Core Implementation — Individual Progress Report
+
+**Group:** 22 — Numerical Computing 1  
+**Member:** Sooma  
+**Assigned area:** Array creation, concatenation and splitting
+
+## Weekly objective
+The project moved from planning into implementation. Each member's assigned module was to be developed against the shared array interface, with small known-answer examples and validation of invalid inputs.
+
+## Individual work focus
+The assigned functions include zeros, ones, constant-filled arrays, numeric ranges, concatenation and splitting. Concatenation requires matching ranks and matching dimensions outside the chosen axis; the selected axis length becomes the sum of the corresponding input lengths. Equal splitting requires divisibility of the selected axis length by the number of sections.
+
+## Implementation plan and technical approach
+The module was to be developed as a focused C++ component with declarations in a header and definitions in a source file. Its public functions should use the shared array conventions and reject invalid inputs before accessing data. Concatenation should map each output coordinate to the correct source and local coordinate. Equal splitting should reject cases where the selected axis length is not divisible by the requested number of sections.
+
+## Testing planned
+Use small arrays with hand-checkable expected results. Include ordinary valid cases and boundary or incompatible-input cases relevant to this module. Check not only numerical values but also result shape, element order and error behaviour where applicable.
+
+## Dependencies and challenges
+The shared NDArray interface, common namespace, function names, axis numbering and exception policy must remain consistent. Any unresolved convention should be agreed with the core-array owner and affected module members before integration.
+
+## Next steps for Week 3
+Complete the main numerical logic, expand edge-case tests, and verify that the module compiles and works with the shared array representation.
+
+## Status qualification
+The supplied weekly report describes implementation targets for the group; it does not provide individual commit history or per-member test logs. The statements above therefore describe this member's assigned work and technical approach, not an invented claim about specific commits or test execution.
+
+
+
+# Week 3 — Advanced Methods and Testing — Individual Progress Report
+
+**Group:** 22 — Numerical Computing 1  
+**Member:** Sooma  
+**Assigned area:** Array creation, concatenation and splitting
+
+## Weekly objective
+The focus shifted to the numerical logic behind each module, multidimensional behaviour, edge cases and module-level tests. Correct output shape and numerical values both mattered.
+
+## Advanced work and numerical considerations
+The assigned functions include zeros, ones, constant-filled arrays, numeric ranges, concatenation and splitting. Concatenation requires matching ranks and matching dimensions outside the chosen axis; the selected axis length becomes the sum of the corresponding input lengths. Equal splitting requires divisibility of the selected axis length by the number of sections.
+
+### Module-specific verification
+Concatenation should map each output coordinate to the correct source and local coordinate. Equal splitting should reject cases where the selected axis length is not divisible by the requested number of sections.
+
+## Testing and review
+The group-wide test plan called for known-answer tests, invalid-input checks, shape verification and review of public headers. For this module, tests should cover the valid and invalid cases described above. Floating-point comparisons should use a documented tolerance, for example |a-b| ≤ ε, rather than relying on exact equality where rounding is expected.
+
+## Challenges and lessons
+Correct numerical values alone are insufficient for multidimensional routines: shape, axis interpretation, ordering and error handling must also be correct. The module should be reviewed against the shared public interface so it can be integrated without duplicate definitions or incompatible conventions.
+
+## Plan for Week 4
+Finish assigned source-code implementation, complete module-level tests, remove placeholders and document any remaining limitation honestly before the code-freeze point.
+
+## Status qualification
+The reviewed source snapshot provides evidence of module coverage and limitations, but not a per-person commit log. This report records the assigned technical work and review focus without attributing undocumented commits or test runs to an individual.
+
+
+
+# Week 4 — Code Completion and Feature Freeze — Individual Progress Report
+
+**Group:** 22 — Numerical Computing 1  
+**Member:** Sooma  
+**Assigned area:** Array creation, concatenation and splitting
+
+## Weekly objective
+This was the final coding and feature-freeze week. Assigned functions, definitions, validation, examples and tests were to be completed; remaining gaps had to be documented rather than described as finished.
+
+## Final coding responsibilities
+The reviewed repository contains zeros, ones, full, arange, concatenate and equal split, and the review marks this scope present with basic tests. Tests should confirm values, shape, element order, axis handling, incompatible inputs and invalid split counts.
+
+## Completion review against the supplied project
+Reviewed status: zeros, ones, full, arange, concatenate and equal split are present with basic tests.
+
+## Quality checks required before feature freeze
+- Confirm every public declaration has a matching definition.
+- Check header includes, source-file registration in CMake and duplicate definitions.
+- Build from a clean build directory and run the relevant tests and examples.
+- Verify invalid-input behaviour and exception types.
+- Update usage examples and document known limitations.
+- Record unfinished requirements with the affected function and evidence; do not label them complete.
+
+## Challenges and outstanding points
+Concatenation should map each output coordinate to the correct source and local coordinate. Equal splitting should reject cases where the selected axis length is not divisible by the requested number of sections.
+
+## Handover to Week 5
+Provide the module's final source, header, tests/examples and a short contribution summary. Explain any known limitations to the integration team so the merge can be validated against the actual behaviour.
+
+## Status qualification
+The completion status above is based on the supplied reviewed project snapshot and its assignment-coverage cross-check. It is not a claim that this member personally ran every test or completed every checklist item. Outstanding items remain explicitly identified for honest reporting.
+
+
+
